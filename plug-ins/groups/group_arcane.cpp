@@ -36,6 +36,7 @@
 #include "interp.h"
 #include "def.h"
 #include "skill_utils.h"
+#include "l10n/ru_prepositions.h"
 
 CLAN(battlerager);
 GSN(scrolls);
@@ -59,7 +60,9 @@ static void recite_one_spell(Character *ch, Object *scroll, Spell::Pointer &spel
     if (t->error != 0) {
         switch (t->error) {
         case TARGET_ERR_CAST_ON_WHOM:
-            ch->pecho("Ты зачитываешь одно из заклинаний с %O2, но оно не находит, на кого подействовать.", scroll);
+            ch->pecho("Ты зачитываешь одно из заклинаний %s %O2, но оно не находит, на кого подействовать.", 
+                ru_get_correct_preposition_form("c", scroll->getName()),
+                scroll);
             break;
         case TARGET_ERR_CAST_ON_WHAT:
             ch->pecho("Ты зачитываешь одно из заклинаний с %O2, но оно не находит, на что подействовать.", scroll);

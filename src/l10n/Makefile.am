@@ -19,6 +19,7 @@ nounholder.cpp \
 verb.cpp \
 pronouns.cpp \
 ru_pronouns.cpp \
+ru_prepositions.cpp \
 flexer.cpp \
 russianstring.cpp \
 xmlrussianstring.cpp 
