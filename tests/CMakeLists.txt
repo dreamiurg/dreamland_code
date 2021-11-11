@@ -18,9 +18,6 @@ add_executable(dreamland_test
 
 target_link_libraries(dreamland_test
   gtest_main
-  l10n
-  lang
-  util
 )
 
 include(GoogleTest)
