@@ -13,13 +13,8 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 add_executable(dreamland_test
-  l10n/ru_prepositions_test.cc
+  dummy_test.cpp
 )
-
-# target_include_directories(dreamland_test PUBLIC
-#   ../src
-#   ../src/lang
-# )
 
 target_link_libraries(dreamland_test
   gtest_main

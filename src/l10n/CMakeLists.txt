@@ -4,7 +4,6 @@ add_library(l10n
     noun.cpp
     nounholder.cpp
     pronouns.cpp
-    ru_prepositions.cpp
     ru_pronouns.cpp
     russianstring.cpp
     verb.cpp
