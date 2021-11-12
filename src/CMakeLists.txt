@@ -2,11 +2,12 @@
 file(TOUCH ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
 # Build all libraries
+add_subdirectory(alloc)
 add_subdirectory(l10n)
-#add_subdirectory(lang)
 add_subdirectory(util)
 
 # Consolidate all include directories
+get_target_property(LIB_ALLOC_INCLUDES alloc INCLUDE_DIRECTORIES)
 get_target_property(LIB_L10N_INCLUDES l10n INCLUDE_DIRECTORIES)
 get_target_property(LIB_UTIL_INCLUDES util INCLUDE_DIRECTORIES)
 
@@ -15,10 +16,10 @@ add_executable(${PROJECT_NAME}
         main.cpp
         dreamland.cpp)
 
-
 target_include_directories(${PROJECT_NAME}  PUBLIC
         ${CMAKE_CURRENT_BINARY_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}
+        ${LIB_ALLOC_INCLUDES}
         ${LIB_L10N_INCLUDES}
         ${LIB_UTIL_INCLUDES}
 #        ${CMAKE_CURRENT_SOURCE_DIR}/alloc
