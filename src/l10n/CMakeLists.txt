@@ -11,7 +11,7 @@ add_library(l10n
         )
 
 target_include_directories(l10n PUBLIC
-        ${CMAKE_BINARY_DIR}/src # FIXME: config.h hack
+        ${CMAKE_BINARY_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_SOURCE_DIR}/src/xml
         ${CMAKE_SOURCE_DIR}/src/lang

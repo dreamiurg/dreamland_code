@@ -15,8 +15,6 @@ $registry = $opts{r};
 
 $source = 'bits.conf' unless $source;
 
-exit if &files_not_modified($source, $file);
-
 my @tabnames;
 
 open (R, "> $file") || die "Cannot open output file.\n";
@@ -231,17 +229,4 @@ sub flag_power
     }
     
     return $power;
-}
-
-sub files_not_modified
-{
-    my ($src, $dst) = @_;
-
-    return 0 unless -r $src;
-    return 0 unless -w $dst;
-
-    my $s_time = stat($src)->mtime;
-    my $d_time = stat($dst)->mtime;
-    
-    return $s_time <= $d_time;
 }
