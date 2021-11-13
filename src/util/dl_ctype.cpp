@@ -27,12 +27,12 @@ bool dl_isspace( char ch )
     }
 }
 
-bool dl_isrusalpha( char c )
+bool dl_isrusalpha( wchar_t c )
 {
-    return (c >= 'Ю' && c < 'Ъ') 
-           || (c >= 'ю' && c <= 'ъ') 
-           || c == 'ё' 
-           || c == 'Ё';
+    return (c >= L'Ю' && c < L'Ъ')
+           || (c >= L'ю' && c <= L'ъ')
+           || c == L'ё'
+           || c == L'Ё';
 }
 
 bool dl_isalpha( char c )
@@ -40,21 +40,21 @@ bool dl_isalpha( char c )
     return isalpha(c) || dl_isrusalpha( c );
 }
 
-bool dl_isupper( char c )
+bool dl_isupper( wchar_t c )
 {
     return isupper( c ) 
-            || (c >= 'Ю' && c < 'Ъ') 
-            || c == 'Ё';
+            || (c >= L'Ю' && c < L'Ъ')
+            || c == L'Ё';
 }
 
-bool dl_islower( char c )
+bool dl_islower( wchar_t c )
 {
     return islower( c )
-           || (c >= 'ю' && c <= 'ъ') 
-           || c == 'ё';
+           || (c >= L'ю' && c <= L'ъ')
+           || c == L'ё';
 }
 
-bool dl_isalnum( char c )
+bool dl_isalnum( wchar_t c )
 {
     return dl_isalpha( c ) || isdigit( c );
 }

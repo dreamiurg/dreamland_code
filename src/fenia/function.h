@@ -10,9 +10,9 @@
 #ifndef __FUNCTION_H__
 #define __FUNCTION_H__
 
-#include <ext/rb_tree>
+//#include <ext/rb_tree>
 
-using namespace __gnu_cxx;
+//using namespace __gnu_cxx;
 
 #include <list>
 
@@ -48,8 +48,9 @@ public:
             return f.getId();
         }
     };
-    typedef rb_tree<id_t, Function, selectId, less<id_t> > Map;
-    
+//    typedef rb_tree<id_t, Function, selectId, less<id_t> > Map;
+    typedef std::map<id_t, Function> Map;
+
     Function(id_t i);
     virtual ~Function( );
 

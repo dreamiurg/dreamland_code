@@ -23,7 +23,7 @@ public:
     using T::Map::begin;
     using T::Map::end;
     using T::Map::lower_bound;
-    using T::Map::_M_insert_unique_;
+//    using T::Map::_M_insert_unique_;
 
     inline BaseManager();
     inline ~BaseManager();

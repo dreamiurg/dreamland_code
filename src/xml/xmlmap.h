@@ -27,7 +27,7 @@ public:
     using Map::begin;
     using Map::find;
     using Map::empty;
-    using Map::value_type;
+    using Map::Map;
     typedef typename std::map<DLString, T>::value_type ValueType;
     typedef list<ValueType> ValueList;
     

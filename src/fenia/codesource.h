@@ -9,10 +9,10 @@
 #ifndef __CODESOURCE_H__
 #define __CODESOURCE_H__
 
-#include <ext/rb_tree>
+//#include <ext/rb_tree>
 #include <stdint.h>
 
-using namespace __gnu_cxx;
+//using namespace __gnu_cxx;
 
 #include "txncontext.h"
 #include "manager-decl.h"
@@ -34,7 +34,8 @@ public:
             return f.getId();
         }
     };
-    typedef rb_tree<id_t, CodeSource, selectId, less<id_t> > Map;
+//    typedef rb_tree<id_t, CodeSource, selectId, less<id_t> > Map;
+    typedef std::map<id_t, CodeSource> Map;
 
     class Manager;
 

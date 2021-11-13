@@ -192,7 +192,7 @@ ServerSocketTask::createSocket(unsigned short port)
     sin.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
     sin.sin_port = htons(port);
 
-    if(bind(sock, (struct sockaddr*)&sin, sizeof(sin)) < 0) {
+    if(::bind(sock, (struct sockaddr*)&sin, sizeof(sin)) < 0) {
         ostringstream os;
         os << "HttpServerSocket: Oops: " << strerror(errno);
         throw Exception(os.str());

@@ -22,4 +22,5 @@ target_include_directories(${TARGET_NAME} PUBLIC
         ${CMAKE_SOURCE_DIR}/src/l10n
         ${CMAKE_SOURCE_DIR}/src/lang
         ${CMAKE_SOURCE_DIR}/src/regex
+        ${CMAKE_SOURCE_DIR}/..
         )

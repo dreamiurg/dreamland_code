@@ -18,24 +18,24 @@ bool dl_isdelim( char );
 bool dl_isalnum( char c );
 bool dl_is_arg_separator(char c);
 
-inline char dl_toupper( char c )
+inline wchar_t dl_toupper( wchar_t c )
 {
     return (c >= 'a' && c <= 'z') 
            ? c + 'A' - 'a' 
-           : (c >= 'ю' && c <= 'ъ') 
-                ? c + 'Ю' - 'ю' 
-                : c == 'ё'
-                    ? 'Ё'
+           : (c >= L'ю' && c <= L'ъ')
+                ? c + L'Ю' - L'ю'
+                : c == L'ё'
+                    ? L'Ё'
                     : c;
 }
-inline char dl_tolower( char c )
+inline wchar_t dl_tolower( wchar_t c )
 {
     return (c >= 'A' && c <= 'Z') 
            ? c + 'a' - 'A' 
-           : (c >= 'Ю' && c < 'Ъ') 
-                ? c + 'ю' - 'Ю' 
-                : c == 'Ё'
-                    ? 'ё'
+           : (c >= L'Ю' && c < L'Ъ')
+                ? c + L'ю' - L'Ю'
+                : c == L'Ё'
+                    ? L'ё'
                     : c;
 }
 

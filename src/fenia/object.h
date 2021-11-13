@@ -10,9 +10,9 @@
 #ifndef __OBJECT_H__
 #define __OBJECT_H__
 
-#include <ext/rb_tree>
+//#include <ext/rb_tree>
 
-using namespace __gnu_cxx;
+//using namespace __gnu_cxx;
 
 #include <xmlpointer.h>
 #include <xmlcontainer.h>
@@ -37,7 +37,8 @@ public:
             return o.getId();
         }
     };
-    typedef rb_tree<id_t, Object, selectId, less<id_t> > Map;
+//    typedef rb_tree<id_t, Object, selectId, less<id_t> > Map;
+    typedef std::map<id_t, Object> Map;
     class Manager;
 
     struct NotRecoveredException : public Exception {

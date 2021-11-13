@@ -37,7 +37,7 @@ struct Db {
  *-------------------------------------------------------------------*/
 DbEnvContext::DbEnvContext( )
 {
-    dbEnv = new DbEnv( 0 );
+    dbEnv = new DbEnv((u_int32_t)0 );
 }
 
 DbEnvContext::~DbEnvContext( )
@@ -45,18 +45,18 @@ DbEnvContext::~DbEnvContext( )
     delete dbEnv;
 }
 
-void 
+void
 DbEnvContext::open( const DLString &path )
 {
 #ifdef HAS_BDB
-    dbEnv->set_lk_max_locks(1000000);        
+    dbEnv->set_lk_max_locks(1000000);
     dbEnv->open(path.c_str( ), DB_INIT_LOCK | DB_INIT_LOG | DB_INIT_MPOOL | DB_INIT_TXN | DB_CREATE | DB_RECOVER, 0640);
 #else
     dbEnv->path = path;
 #endif
 }
 
-void 
+void
 DbEnvContext::close( )
 {
 #ifdef HAS_BDB
@@ -148,7 +148,7 @@ DbContext::~DbContext( )
     }
 }
 
-void 
+void
 DbContext::open( const char *file, const char *dbname )
 {
 #ifdef HAS_BDB
@@ -157,9 +157,9 @@ DbContext::open( const char *file, const char *dbname )
         db->open( NULL, file, dbname, DB_BTREE, DB_CREATE | DB_AUTO_COMMIT, 0 );
     } catch(const DbException &ex) {
         LogStream::sendError()
-            << "Failed to open DbContext: " 
-            << (file ? file : "<unknown>") << ": " 
-            << (dbname ? dbname : "<unknown>") << ": " 
+            << "Failed to open DbContext: "
+            << (file ? file : "<unknown>") << ": "
+            << (dbname ? dbname : "<unknown>") << ": "
             << ex.what( ) << endl;
     }
 #else
@@ -169,14 +169,14 @@ DbContext::open( const char *file, const char *dbname )
 #endif
 }
 
-void 
+void
 DbContext::close( )
 {
     if(!db) {
         LogStream::sendError() << "DbContext already closed" << endl;
         return;
     }
-    
+
 #if BDB
     try {
         db->close( 0 );
@@ -197,7 +197,7 @@ void
 DbContext::load( )
 {
     const char *file = 0, *dbname = 0;
-    
+
 #ifdef HAS_BDB
     db->get_dbname(&file, &dbname);
 #else
@@ -205,14 +205,14 @@ DbContext::load( )
     dbname = db->name.c_str( );
 #endif
 
-    LogStream::sendNotice( ) 
+    LogStream::sendNotice( )
         << "Loading DbContext: "
-        << (file ? file : "<unknown>") << ":" 
+        << (file ? file : "<unknown>") << ":"
         << (dbname ? dbname : "<unknown>") << "..." << endl;
 
     int cnt = 0;
     DbTxn *txn;
-    
+
     txn = getCurrentTxn( );
 
 #ifdef HAS_BDB
@@ -313,14 +313,14 @@ DbContext::load( )
         
         closedir(dirp);
     }
-    
+
 #endif
 
     LogStream::sendNotice() << "Total " << cnt << " records loaded" << endl;
-    
+
 }
 
-void 
+void
 DbContext::get( key_t k, Data &dat )
 {
 #ifdef HAS_BDB
@@ -331,8 +331,8 @@ DbContext::get( key_t k, Data &dat )
 
         dat.set(val.get_data( ), val.get_size( ));
     } catch(const DbException &ex) {
-        LogStream::sendError() 
-            << "DbContext::get(" << k << "): " 
+        LogStream::sendError()
+            << "DbContext::get(" << k << "): "
             << ex.what( ) << endl;
     }
 #else
@@ -383,7 +383,7 @@ DbContext::put( key_t k, Data &dat )
 
         db->put( getCurrentTxn( ), &key, &val, 0 );
     } catch(const DbException &ex) {
-        LogStream::sendError() 
+        LogStream::sendError()
             << "DbContext::put(" << k << "): " << ex.what( ) << endl;
     }
 #else
@@ -420,7 +420,7 @@ DbContext::del( key_t k )
 
         db->del( getCurrentTxn( ), &key, 0 );
     } catch(const DbException &ex) {
-        LogStream::sendError() 
+        LogStream::sendError()
             << "DbContext::del(" << k << "): " << ex.what( ) << endl;
     }
 #else
