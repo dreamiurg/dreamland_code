@@ -1,5 +1,9 @@
-set(CMAKE_CXX_STANDARD 20)
-add_compile_definitions(CMAKE HAS_BDB HAVE_DIRENT_H)
+# FIXME: Temporary hacks to get the code compile without making any changes to it - until migration to CMake is complete
+file(TOUCH ${CMAKE_BINARY_DIR}/src/config.h)
+add_compile_definitions(CMAKE HAS_BDB HAVE_DIRENT_H CLOSEDIR=closedir)
+
+# FIXME: Suppress annoying warnings until we fix the root cause
+add_compile_options(-Wno-multichar)
 
 # Build all libraries
 add_subdirectory(alloc)
