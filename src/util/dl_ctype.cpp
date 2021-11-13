@@ -7,6 +7,33 @@
 
 #include "dl_ctype.h"
 
+char dl_toupper( char c )
+{
+    return (c >= 'a' && c <= 'z')
+           ? c + 'A' - 'a'
+           : (c >= 'ю' && c <= 'ъ')
+             ? c + 'Ю' - 'ю'
+             : c == 'ё'
+               ? 'Ё'
+               : c;
+}
+
+char dl_tolower( char c )
+{
+    return (c >= 'A' && c <= 'Z')
+           ? c + 'a' - 'A'
+           : (c >= 'Ю' && c < 'Ъ')
+             ? c + 'ю' - 'Ю'
+             : c == 'Ё'
+               ? 'ё'
+               : c;
+}
+
+bool dl_is_arg_separator(char c)
+{
+    return c == '\'' || c == '"' || c == '!';
+}
+
 bool dl_isdelim( char ch )
 {
     return (strchr( " ,.!;'\":\t`" , ch ) != NULL);

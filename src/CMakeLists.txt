@@ -16,8 +16,7 @@ get_target_property(LIB_FLAGS_INCLUDES flags INCLUDE_DIRECTORIES)
 get_target_property(LIB_L10N_INCLUDES l10n INCLUDE_DIRECTORIES)
 get_target_property(LIB_UTIL_INCLUDES util INCLUDE_DIRECTORIES)
 get_target_property(LIB_IO_INCLUDES io INCLUDE_DIRECTORIES)
-
-
+get_target_property(LIB_CORE_INCLUDES core INCLUDE_DIRECTORIES)
 
 # Build main executable
 add_executable(${PROJECT_NAME}
@@ -33,23 +32,15 @@ target_include_directories(${PROJECT_NAME} PUBLIC
         ${LIB_L10N_INCLUDES}
         ${LIB_UTIL_INCLUDES}
         ${LIB_IO_INCLUDES}
-        #        ${CMAKE_CURRENT_SOURCE_DIR}/alloc
-        #        ${CMAKE_CURRENT_SOURCE_DIR}/core
-        #        ${CMAKE_CURRENT_SOURCE_DIR}/flags
-        #        ${CMAKE_CURRENT_SOURCE_DIR}/lang
-        #        ${CMAKE_CURRENT_SOURCE_DIR}/io
-        #        ${CMAKE_CURRENT_SOURCE_DIR}/util
-        #        ${CMAKE_CURRENT_SOURCE_DIR}/xml
-        #        ${CMAKE_CURRENT_SOURCE_DIR}/plugin
-        #        ${CMAKE_CURRENT_SOURCE_DIR}/core/scheduler
-        #        ${CMAKE_CURRENT_SOURCE_DIR}/scheduler
-        #        ${CMAKE_CURRENT_SOURCE_DIR}/gref
-        #        ${CMAKE_CURRENT_SOURCE_DIR}/l10n
-        #        ${CMAKE_CURRENT_SOURCE_DIR}/core/skills
+        ${LIB_CORE_INCLUDES}
         )
 
-target_link_directories(${PROJECT_NAME} PUBLIC
-        lang
+target_link_libraries(${PROJECT_NAME}
+        alloc
+        flags
+        io
+        l10n
         util
+        core
         )
 

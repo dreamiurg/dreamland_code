@@ -1,17 +1,16 @@
-add_custom_target(autoflags.h
+add_custom_target(autoflags.h ALL
         DEPENDS ${CMAKE_SOURCE_DIR}/src/bits.conf
         COMMAND ${CMAKE_SOURCE_DIR}/src/makebits.pl -s ${CMAKE_SOURCE_DIR}/src/bits.conf -h -r -f ${CMAKE_BINARY_DIR}/src/autoflags.h
         VERBATIM
-)
+        )
 
-add_custom_target(autoflags.cpp
-        DEPENDS ${CMAKE_SOURCE_DIR}/src/bits.conf ${CMAKE_BINARY_DIR}/src/autoflags.h
+add_custom_target(autoflags.cpp ALL
+        DEPENDS ${CMAKE_SOURCE_DIR}/src/bits.conf
         COMMAND ${CMAKE_SOURCE_DIR}/src/makebits.pl -s ${CMAKE_SOURCE_DIR}/src/bits.conf -r -f ${CMAKE_BINARY_DIR}/src/autoflags.cpp && ${CMAKE_SOURCE_DIR}/src/makebits.pl -s ${CMAKE_SOURCE_DIR}/src/bits.conf -h -r -f ${CMAKE_BINARY_DIR}/src/autoflags.h
         VERBATIM
-)
+        )
 
 add_library(core
-        ${CMAKE_BINARY_DIR}/src/autoflags.cpp
         affect.cpp
         affectlist.cpp
         affectmanager.cpp
@@ -58,6 +57,7 @@ target_include_directories(core PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/skills
         ${CMAKE_CURRENT_SOURCE_DIR}/clan
         ${CMAKE_CURRENT_SOURCE_DIR}/behavior
+        ${CMAKE_CURRENT_SOURCE_DIR}/fenia
         ${CMAKE_SOURCE_DIR}/src
         ${CMAKE_SOURCE_DIR}/src/util
         ${CMAKE_SOURCE_DIR}/src/xml
@@ -68,4 +68,5 @@ target_include_directories(core PUBLIC
         ${CMAKE_SOURCE_DIR}/src/io
         ${CMAKE_SOURCE_DIR}/src/l10n
         ${CMAKE_SOURCE_DIR}/src/fenia
+        ${CMAKE_SOURCE_DIR}/src/plugin
         )

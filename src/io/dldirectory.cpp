@@ -54,7 +54,7 @@ void DLDirectory::open( )
 void DLDirectory::close( )
 {
     if (dirp != 0) {
-        CLOSEDIR( dirp );
+        closedir( dirp );
         dirp = 0;
     }
 }
