@@ -242,6 +242,6 @@ sub files_not_modified
 
     my $s_time = stat($src)->mtime;
     my $d_time = stat($dst)->mtime;
-
+    
     return $s_time <= $d_time;
 }
