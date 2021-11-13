@@ -12,6 +12,7 @@ add_subdirectory(flags)
 add_subdirectory(io)
 add_subdirectory(l10n)
 add_subdirectory(util)
+add_subdirectory(process)
 
 # Consolidate all include directories
 get_target_property(LIB_ALLOC_INCLUDES alloc INCLUDE_DIRECTORIES)
@@ -20,6 +21,7 @@ get_target_property(LIB_FLAGS_INCLUDES flags INCLUDE_DIRECTORIES)
 get_target_property(LIB_IO_INCLUDES io INCLUDE_DIRECTORIES)
 get_target_property(LIB_L10N_INCLUDES l10n INCLUDE_DIRECTORIES)
 get_target_property(LIB_UTIL_INCLUDES util INCLUDE_DIRECTORIES)
+get_target_property(LIB_PROCESS_INCLUDES process INCLUDE_DIRECTORIES)
 
 # Build main executable
 add_executable(${PROJECT_NAME}
@@ -36,6 +38,16 @@ target_include_directories(${PROJECT_NAME} PUBLIC
         ${LIB_UTIL_INCLUDES}
         ${LIB_IO_INCLUDES}
         ${LIB_CORE_INCLUDES}
+        ${LIB_PROCESS_INCLUDES}
+        )
+
+target_link_directories(${PROJECT_NAME} PUBLIC
+        alloc
+        flags
+#        io
+        l10n
+        util
+        core
         )
 
 target_link_libraries(${PROJECT_NAME}

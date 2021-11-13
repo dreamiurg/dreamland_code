@@ -13,18 +13,14 @@ add_library(lang
     stringset.cpp
 )
 
-target_compile_options(lang PUBLIC
-    -Wno-multichar
-)
-
 target_include_directories(lang PUBLIC
-    ../../../objs
-    ../
-    ../l10n
-    ../lang
-    ../util
-)
+        ${CMAKE_BINARY_DIR}/src
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_SOURCE_DIR}/src/lang
+        ${CMAKE_SOURCE_DIR}/src/l10n
+        ${CMAKE_SOURCE_DIR}/src/util
+        )
 
 target_link_libraries(l10n
-  util
-)
+        lang
+        )

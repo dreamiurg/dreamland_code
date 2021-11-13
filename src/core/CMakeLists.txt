@@ -54,19 +54,20 @@ add_dependencies(core
 target_include_directories(core PUBLIC
         ${CMAKE_BINARY_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}
-        ${CMAKE_CURRENT_SOURCE_DIR}/skills
-        ${CMAKE_CURRENT_SOURCE_DIR}/clan
         ${CMAKE_CURRENT_SOURCE_DIR}/behavior
+        ${CMAKE_CURRENT_SOURCE_DIR}/clan
         ${CMAKE_CURRENT_SOURCE_DIR}/fenia
+        ${CMAKE_CURRENT_SOURCE_DIR}/scheduler
+        ${CMAKE_CURRENT_SOURCE_DIR}/skills
         ${CMAKE_SOURCE_DIR}/src
-        ${CMAKE_SOURCE_DIR}/src/util
-        ${CMAKE_SOURCE_DIR}/src/xml
         ${CMAKE_SOURCE_DIR}/src/alloc
-        ${CMAKE_SOURCE_DIR}/src/lang
+        ${CMAKE_SOURCE_DIR}/src/fenia
         ${CMAKE_SOURCE_DIR}/src/flags
         ${CMAKE_SOURCE_DIR}/src/gref
         ${CMAKE_SOURCE_DIR}/src/io
         ${CMAKE_SOURCE_DIR}/src/l10n
-        ${CMAKE_SOURCE_DIR}/src/fenia
+        ${CMAKE_SOURCE_DIR}/src/lang
         ${CMAKE_SOURCE_DIR}/src/plugin
+        ${CMAKE_SOURCE_DIR}/src/util
+        ${CMAKE_SOURCE_DIR}/src/xml
         )
