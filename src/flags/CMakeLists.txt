@@ -1,4 +1,6 @@
-add_library(flags
+set(TARGET_NAME flags)
+
+add_library(${TARGET_NAME}
         enumeration.cpp
         flags.cpp
         flagtable.cpp
@@ -7,7 +9,7 @@ add_library(flags
         xmlflags.cpp
         )
 
-target_include_directories(flags PUBLIC
+target_include_directories(${TARGET_NAME} PUBLIC
         ${CMAKE_BINARY_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_SOURCE_DIR}/src/alloc

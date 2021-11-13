@@ -1,4 +1,6 @@
-add_library(util
+set(TARGET_NAME util)
+
+add_library(${TARGET_NAME}
         crypto.cpp
         date.cpp
         dl_ctype.cpp
@@ -14,7 +16,7 @@ add_library(util
         timer.cpp
         )
 
-target_include_directories(util PUBLIC
+target_include_directories(${TARGET_NAME} PUBLIC
         ${CMAKE_BINARY_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_SOURCE_DIR}/src/l10n

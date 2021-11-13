@@ -1,3 +1,5 @@
+set(TARGET_NAME core)
+
 add_custom_target(autoflags.h ALL
         DEPENDS ${CMAKE_SOURCE_DIR}/src/bits.conf
         COMMAND ${CMAKE_SOURCE_DIR}/src/makebits.pl -s ${CMAKE_SOURCE_DIR}/src/bits.conf -h -r -f ${CMAKE_BINARY_DIR}/src/autoflags.h
@@ -10,7 +12,7 @@ add_custom_target(autoflags.cpp ALL
         VERBATIM
         )
 
-add_library(core
+add_library(${TARGET_NAME}
         affect.cpp
         affectlist.cpp
         affectmanager.cpp
@@ -46,12 +48,12 @@ add_library(core
         xmlattributes.cpp
         )
 
-add_dependencies(core
+add_dependencies(${TARGET_NAME}
         autoflags.h
         autoflags.cpp
         )
 
-target_include_directories(core PUBLIC
+target_include_directories(${TARGET_NAME} PUBLIC
         ${CMAKE_BINARY_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/behavior

@@ -1,11 +1,13 @@
-add_library(process
-        thread.cpp
+set(TARGET_NAME process)
+
+add_library(${TARGET_NAME}
+        monitor.cpp
         mutex.cpp
         process.cpp
-        monitor.cpp
+        thread.cpp
         )
 
-target_include_directories(process PUBLIC
+target_include_directories(${TARGET_NAME} PUBLIC
         ${CMAKE_BINARY_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_SOURCE_DIR}/src/l10n

@@ -1,6 +1,6 @@
 # FIXME: Temporary hacks to get the code compile without making any changes to it - until migration to CMake is complete
 file(TOUCH ${CMAKE_BINARY_DIR}/src/config.h)
-add_compile_definitions(CMAKE HAS_BDB HAVE_DIRENT_H CLOSEDIR=closedir)
+add_compile_definitions(HAS_BDB HAVE_DIRENT_H CLOSEDIR=closedir)
 
 # FIXME: Suppress annoying warnings until we fix the root cause
 add_compile_options(-Wno-multichar)
@@ -11,6 +11,7 @@ add_subdirectory(core)
 add_subdirectory(flags)
 add_subdirectory(io)
 add_subdirectory(l10n)
+add_subdirectory(lang)
 add_subdirectory(util)
 add_subdirectory(process)
 
@@ -30,32 +31,24 @@ add_executable(${PROJECT_NAME}
         )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
-        ${CMAKE_CURRENT_BINARY_DIR}
+        ${CMAKE_BINARY_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${LIB_ALLOC_INCLUDES}
-        ${LIB_FLAGS_INCLUDES}
-        ${LIB_L10N_INCLUDES}
-        ${LIB_UTIL_INCLUDES}
-        ${LIB_IO_INCLUDES}
         ${LIB_CORE_INCLUDES}
+        ${LIB_FLAGS_INCLUDES}
+        ${LIB_IO_INCLUDES}
+        ${LIB_L10N_INCLUDES}
         ${LIB_PROCESS_INCLUDES}
-        )
-
-target_link_directories(${PROJECT_NAME} PUBLIC
-        alloc
-        flags
-#        io
-        l10n
-        util
-        core
+        ${LIB_UTIL_INCLUDES}
         )
 
 target_link_libraries(${PROJECT_NAME}
         alloc
+        core
         flags
         io
         l10n
+        process
         util
-        core
         )
 

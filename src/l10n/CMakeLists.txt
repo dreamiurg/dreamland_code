@@ -1,4 +1,6 @@
-add_library(l10n
+set(TARGET_NAME l10n)
+
+add_library(${TARGET_NAME}
         flexer.cpp
         grammar_entities.cpp
         noun.cpp
@@ -10,14 +12,10 @@ add_library(l10n
         xmlrussianstring.cpp
         )
 
-target_include_directories(l10n PUBLIC
+target_include_directories(${TARGET_NAME} PUBLIC
         ${CMAKE_BINARY_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_SOURCE_DIR}/src/xml
         ${CMAKE_SOURCE_DIR}/src/lang
         ${CMAKE_SOURCE_DIR}/src/util
-        )
-
-target_link_libraries(l10n
-        lang
         )
