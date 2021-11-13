@@ -17,9 +17,32 @@ bool dl_islower( char );
 bool dl_isdelim( char );
 bool dl_isalnum( char c );
 bool dl_is_arg_separator(char c);
-char dl_toupper( char c );
-char dl_tolower( char c );
-bool dl_is_arg_separator(char c);
+
+inline char dl_toupper( char c )
+{
+    return (c >= 'a' && c <= 'z') 
+           ? c + 'A' - 'a' 
+           : (c >= 'ю' && c <= 'ъ') 
+                ? c + 'Ю' - 'ю' 
+                : c == 'ё'
+                    ? 'Ё'
+                    : c;
+}
+inline char dl_tolower( char c )
+{
+    return (c >= 'A' && c <= 'Z') 
+           ? c + 'a' - 'A' 
+           : (c >= 'Ю' && c < 'Ъ') 
+                ? c + 'ю' - 'Ю' 
+                : c == 'Ё'
+                    ? 'ё'
+                    : c;
+}
+
+inline bool dl_is_arg_separator(char c)
+{
+    return c == '\'' || c == '"' || c == '!';
+}
 
 #ifdef __cplusplus
 }
