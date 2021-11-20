@@ -2,6 +2,7 @@
 add_subdirectory(behavior)
 add_subdirectory(clan)
 add_subdirectory(fenia)
+add_subdirectory(scheduler)
 
 set(TARGET_NAME core)
 

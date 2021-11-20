@@ -48,6 +48,7 @@ target_link_libraries(${PROJECT_NAME}
         corebehavior
         coreclan
         corefenia
+        corescheduler
         flags
         io
         l10n
