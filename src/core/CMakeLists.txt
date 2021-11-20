@@ -1,6 +1,7 @@
 # Build all libraries
 add_subdirectory(behavior)
-
+add_subdirectory(clan)
+add_subdirectory(fenia)
 
 set(TARGET_NAME core)
 

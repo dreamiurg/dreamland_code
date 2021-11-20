@@ -46,6 +46,7 @@ target_link_libraries(${PROJECT_NAME}
         alloc
         core
         core-behavior
+        core-clan
         flags
         io
         l10n
