@@ -1,3 +1,7 @@
+# Build all libraries
+add_subdirectory(behavior)
+
+
 set(TARGET_NAME core)
 
 add_custom_target(autoflags.h ALL
