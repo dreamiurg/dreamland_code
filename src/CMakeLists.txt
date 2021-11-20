@@ -45,8 +45,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 target_link_libraries(${PROJECT_NAME}
         alloc
         core
-        core-behavior
-        core-clan
+        corebehavior
+        coreclan
+        corefenia
         flags
         io
         l10n
