@@ -45,6 +45,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 target_link_libraries(${PROJECT_NAME}
         alloc
         core
+        core-behavior
         flags
         io
         l10n

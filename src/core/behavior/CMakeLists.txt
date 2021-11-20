@@ -1,4 +1,4 @@
-set(TARGET_NAME behavior)
+set(TARGET_NAME core-behavior)
 
 add_library(${TARGET_NAME}
         areabehavior.cpp
