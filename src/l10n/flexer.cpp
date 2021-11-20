@@ -41,7 +41,7 @@ DLString Flexer::flexAux(const DLString &str, int part_num, bool fNeedRoot, bool
     static const DLString closeColour("{x");
 
     int case_counter, iPhase;
-    register char tempchar;
+    char tempchar;
     basic_ostringstream<char> buf;
     bool hasColour = false;
     
