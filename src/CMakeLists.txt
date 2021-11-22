@@ -8,6 +8,7 @@ add_compile_options(-Wno-multichar)
 # Build all libraries
 add_subdirectory(alloc)
 add_subdirectory(core)
+add_subdirectory(fenia)
 add_subdirectory(flags)
 add_subdirectory(io)
 add_subdirectory(l10n)
@@ -50,6 +51,7 @@ target_link_libraries(${PROJECT_NAME}
         corefenia
         corescheduler
         coreskills
+        fenia
         flags
         io
         l10n

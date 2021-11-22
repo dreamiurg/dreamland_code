@@ -46,7 +46,7 @@ BaseManager<T>::at(id_t id)
 {
     iterator i = lower_bound(id);
 
-    if(i == T::Map::end() || id < i->getId())
+    if(i == T::Map::end() || id < i->second.getId())
         i = _M_insert_unique_(i, T(id));
 
 
